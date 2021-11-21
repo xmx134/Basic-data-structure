@@ -1,3 +1,5 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BST<E extends Comparable<E>> {
@@ -128,5 +130,21 @@ public class BST<E extends Comparable<E>> {
         System.out.println(node.e);
     }
 
+//    层序遍历（广度优先遍历）
+    public void levelOrder() {
+        Queue<Node> queue = new LinkedList<>(); // 利用队列先进先出的特性进行层序遍历
+        queue.add(root);
+
+        while (!queue.isEmpty()){
+            Node cur = queue.remove();
+            System.out.println(cur.e);
+            if(cur.left != null) {
+                queue.add(cur.left);
+            }
+            if (cur.right != null) {
+                queue.add(cur.right);
+            }
+        }
+    }
 
 }
