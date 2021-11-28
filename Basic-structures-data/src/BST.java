@@ -3,6 +3,7 @@ import java.util.Queue;
 import java.util.Stack;
 
 public class BST<E extends Comparable<E>> {
+    // 时间复杂度：全是O(h)，h 为树的高度也就是 O(logn) ~ O(n)
     // 二分搜索树是有序的、
     private class Node {
         public E e;
@@ -33,7 +34,7 @@ public class BST<E extends Comparable<E>> {
     }
 
     public void add(E e) {
-//        调用递归
+        // 调用递归
         root = add(root, e);
     }
 
@@ -56,7 +57,6 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
-
     public boolean contains(E e) {
         return contains(root, e);
     }
@@ -74,7 +74,7 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
-    //    最自然、最常用的遍历：前序遍历
+    // 最自然、最常用的遍历：前序遍历
     public void preOrder() {
         preOrder(root);
     }
@@ -88,7 +88,7 @@ public class BST<E extends Comparable<E>> {
         preOrder(node.right);
     }
 
-    //    非递归的前序遍历
+    // 非递归的前序遍历
     public void preOrderNR() {
         Stack<Node> stack = new Stack<>();
         stack.push(root);
@@ -106,7 +106,7 @@ public class BST<E extends Comparable<E>> {
 
     }
 
-    //  中序遍历
+    // 中序遍历
     public void inOrder() {
         inOrder(root);
     }
@@ -120,7 +120,7 @@ public class BST<E extends Comparable<E>> {
         inOrder(node.right);
     }
 
-    //    后序遍历
+    // 后序遍历
     public void postOrder() {
         postOrder(root);
     }
@@ -134,7 +134,7 @@ public class BST<E extends Comparable<E>> {
         System.out.println(node.e);
     }
 
-    //    层序遍历（广度优先遍历）
+    // 层序遍历（广度优先遍历）
     public void levelOrder() {
         Queue<Node> queue = new LinkedList<>(); // 利用队列先进先出的特性进行层序遍历
         queue.add(root);
@@ -151,7 +151,7 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
-    //    寻找二分搜索树的最小元素
+    // 寻找二分搜索树的最小元素
     public E minimum() {
         if (getSize() == 0) {
             throw new IllegalArgumentException("BST is empty！");
@@ -166,7 +166,7 @@ public class BST<E extends Comparable<E>> {
         return minimum(node.left);
     }
 
-    //    寻找二分搜索树的最大元素
+    // 寻找二分搜索树的最大元素
     public E maxmum() {
         if (getSize() == 0) {
             throw new IllegalArgumentException("BST is empty!");
@@ -181,7 +181,7 @@ public class BST<E extends Comparable<E>> {
         return maxmum(node.right);
     }
 
-    //    删除二分搜索树的最小元素
+    // 删除二分搜索树的最小元素
     public E removeMin() {
         E ret = minimum();
 
@@ -190,7 +190,7 @@ public class BST<E extends Comparable<E>> {
         return ret;
     }
 
-    //    删除掉以node为根的二分搜索树中的最小节点，返回删除节点后新的二分搜索树的根
+    // 删除掉以node为根的二分搜索树中的最小节点，返回删除节点后新的二分搜索树的根
     private Node removeMin(Node node) {
         if (node.left == null) {
             Node rightNode = node.right;
@@ -202,7 +202,7 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
-    //    删除二分搜索树的最大元素
+    // 删除二分搜索树的最大元素
     public E removeMax() {
         E ret = maxmum();
 
@@ -221,7 +221,7 @@ public class BST<E extends Comparable<E>> {
         return node;
     }
 
-    //    删除二分搜索树中的任意节点
+    // 删除二分搜索树中的任意节点
     public void remove(E e) {
         remove(root, e);
     }
