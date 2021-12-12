@@ -1,9 +1,9 @@
 public interface Map<K, V> {
-    public void add(K k, V v);
-    public V remove(K k);
-    public boolean contains(K k);
-    public V get(K k);
-    public void set(K k, V v);
+    public void add(K key, V value);
+    public V remove(K key);
+    public boolean contains(K key);
+    public V get(K key);
+    public void set(K key, V value);
     public int getSize();
     public boolean isEmyty();
 }
